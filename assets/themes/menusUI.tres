@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dn6fw3md85wvw"]
+
+[ext_resource type="FontFile" uid="uid://dayc0sqefdb7u" path="res://assets/fonts/Hardpixel-nn51.otf" id="1_teaie"]
+
+[resource]
+/fonts/font = ExtResource("1_teaie")
+Button/font_sizes/font_size = 18
+Button/fonts/font = ExtResource("1_teaie")
+Label/font_sizes/font_size = 24

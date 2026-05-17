@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhogp5yn20nl7"]
+
+[ext_resource type="Theme" uid="uid://dsqdtyegbxqtl" path="res://assets/themes/UI.tres" id="1_kswqh"]
+[ext_resource type="Script" path="res://scripts/settings/Settings.cs" id="2_02fip"]
+[ext_resource type="FontFile" uid="uid://dayc0sqefdb7u" path="res://assets/fonts/Hardpixel-nn51.otf" id="3_7jogi"]
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kswqh")
+script = ExtResource("2_02fip")
+
+[node name="UI" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="backButton" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = ">"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7jogi")
+bbcode_enabled = true
+text = "[center]Титри
+Ця гра створена студентом групи АІ-225 Лебедюком Дмитром Вадимовичем
+
+Credits
+This game created by student from group AI-225  Lebediuk Dmytro Vadymovych [/center]"

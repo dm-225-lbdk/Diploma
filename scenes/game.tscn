@@ -1,0 +1,245 @@
+[gd_scene load_steps=24 format=3 uid="uid://dwldamnwfipi7"]
+
+[ext_resource type="Script" path="res://scripts/game/Game.cs" id="1_v5x32"]
+[ext_resource type="Theme" uid="uid://dsqdtyegbxqtl" path="res://assets/themes/UI.tres" id="1_vipyw"]
+[ext_resource type="Script" path="res://scripts/game/UI/CameraController.cs" id="2_kxf16"]
+[ext_resource type="Script" path="res://scripts/game/TileMapGame.cs" id="4_dh4fy"]
+[ext_resource type="TileSet" uid="uid://brs8lxsggk7dr" path="res://scenes/terrain.tres" id="4_v8v4e"]
+[ext_resource type="Script" path="res://scripts/game/TileMapController/Generation.cs" id="5_1hy5r"]
+[ext_resource type="Theme" uid="uid://cunn36ygkkv4u" path="res://assets/themes/debugUI.tres" id="5_7wq0o"]
+[ext_resource type="Script" path="res://scripts/game/TileMapController/Placement.cs" id="5_v5v11"]
+[ext_resource type="Theme" uid="uid://dn6fw3md85wvw" path="res://assets/themes/menusUI.tres" id="6_psgcx"]
+[ext_resource type="Script" path="res://scripts/game/TileMapController/Resourсes.cs" id="7_34w0r"]
+[ext_resource type="Script" path="res://scripts/game/UI/DebugUI.cs" id="10_y41jb"]
+[ext_resource type="ButtonGroup" uid="uid://blfer2yn4nrei" path="res://assets/themes/construct_group.tres" id="12_dkuwd"]
+[ext_resource type="Theme" uid="uid://dv7ud11gd8vdq" path="res://assets/themes/statsUI.tres" id="12_t8hr2"]
+[ext_resource type="Texture2D" uid="uid://d0jbvxd07o3de" path="res://assets/sprites/ore.png" id="13_ee36d"]
+[ext_resource type="Script" path="res://scripts/game/UI/PointInfo.cs" id="13_ofgoc"]
+[ext_resource type="Script" path="res://scripts/game/UI/ChooseConstruct.cs" id="13_ycing"]
+[ext_resource type="Texture2D" uid="uid://xiwy4qiqhy2c" path="res://assets/sprites/fuel.png" id="14_euhwi"]
+[ext_resource type="Texture2D" uid="uid://di6bpnik6n3pd" path="res://assets/sprites/people.png" id="15_u01mp"]
+[ext_resource type="Texture2D" uid="uid://beu4hwbhiw2i0" path="res://assets/sprites/money.png" id="16_qfm32"]
+[ext_resource type="Texture2D" uid="uid://25c675iu7hpx" path="res://assets/sprites/ingot.png" id="17_c23po"]
+[ext_resource type="Texture2D" uid="uid://buj5ip4ttri7w" path="res://assets/sprites/food.png" id="18_ma8wg"]
+[ext_resource type="Script" path="res://scripts/game/UI/ControlConstruct.cs" id="21_6o0m4"]
+[ext_resource type="Script" path="res://scripts/game/UI/OptionMenu.cs" id="22_fjyhw"]
+
+[node name="game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v5x32")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+position_smoothing_speed = 1.0
+editor_draw_drag_margin = true
+script = ExtResource("2_kxf16")
+
+[node name="TileMapGame" type="TileMap" parent="."]
+position = Vector2(320, 180)
+tile_set = ExtResource("4_v8v4e")
+format = 2
+layer_0/name = "ground"
+layer_1/name = "grass"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "mountains"
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "stuff"
+layer_3/z_index = 3
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "buildings"
+layer_4/z_index = 2
+layer_4/tile_data = PackedInt32Array()
+layer_5/name = "ui"
+layer_5/z_index = 3
+layer_5/tile_data = PackedInt32Array()
+script = ExtResource("4_dh4fy")
+
+[node name="Generation" type="Node" parent="TileMapGame"]
+script = ExtResource("5_1hy5r")
+
+[node name="Placement" type="Node" parent="TileMapGame"]
+script = ExtResource("5_v5v11")
+
+[node name="Resourсes" type="Node" parent="TileMapGame"]
+script = ExtResource("7_34w0r")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MargUI" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vipyw")
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="DebugUI" type="VBoxContainer" parent="UI/MargUI"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("5_7wq0o")
+theme_override_constants/separation = 6
+script = ExtResource("10_y41jb")
+
+[node name="HUD" type="VBoxContainer" parent="UI/MargUI"]
+layout_mode = 2
+theme = ExtResource("6_psgcx")
+
+[node name="TopWindow" type="PanelContainer" parent="UI/MargUI/HUD"]
+layout_mode = 2
+
+[node name="StatsBox" type="HBoxContainer" parent="UI/MargUI/HUD/TopWindow"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("12_t8hr2")
+alignment = 2
+
+[node name="Ore" type="Label" parent="UI/MargUI/HUD/TopWindow/StatsBox"]
+layout_mode = 2
+text = "Ore"
+metadata/Type = "Ore"
+
+[node name="Fuel" type="Label" parent="UI/MargUI/HUD/TopWindow/StatsBox"]
+layout_mode = 2
+text = "Fuel"
+metadata/Type = "Fuel"
+
+[node name="Ingot" type="Label" parent="UI/MargUI/HUD/TopWindow/StatsBox"]
+layout_mode = 2
+text = "Ingot"
+metadata/Type = "Ingot"
+
+[node name="People" type="Label" parent="UI/MargUI/HUD/TopWindow/StatsBox"]
+layout_mode = 2
+text = "People"
+metadata/Type = "People"
+
+[node name="Money" type="Label" parent="UI/MargUI/HUD/TopWindow/StatsBox"]
+layout_mode = 2
+text = "Money"
+metadata/Type = "Money"
+
+[node name="Food" type="Label" parent="UI/MargUI/HUD/TopWindow/StatsBox"]
+layout_mode = 2
+text = "Food"
+metadata/Type = "Food"
+
+[node name="OptionButton" type="Button" parent="UI/MargUI/HUD/TopWindow"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = ">"
+
+[node name="MenusUI" type="HBoxContainer" parent="UI/MargUI/HUD"]
+layout_mode = 2
+alignment = 2
+
+[node name="MenuBox" type="VBoxContainer" parent="UI/MargUI/HUD/MenusUI"]
+layout_direction = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="PointInfo" type="Label" parent="UI/MargUI/HUD/MenusUI/MenuBox"]
+layout_mode = 2
+script = ExtResource("13_ofgoc")
+
+[node name="ChooseConstruct" type="VBoxContainer" parent="UI/MargUI/HUD/MenusUI/MenuBox"]
+visible = false
+layout_mode = 2
+alignment = 1
+script = ExtResource("13_ycing")
+
+[node name="VariantsBox" type="HBoxContainer" parent="UI/MargUI/HUD/MenusUI/MenuBox/ChooseConstruct"]
+layout_mode = 2
+
+[node name="Ore" type="Button" parent="UI/MargUI/HUD/MenusUI/MenuBox/ChooseConstruct/VariantsBox"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("12_dkuwd")
+icon = ExtResource("13_ee36d")
+metadata/Type = "Ore"
+
+[node name="Fuel" type="Button" parent="UI/MargUI/HUD/MenusUI/MenuBox/ChooseConstruct/VariantsBox"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("12_dkuwd")
+icon = ExtResource("14_euhwi")
+metadata/Type = "Fuel"
+
+[node name="People" type="Button" parent="UI/MargUI/HUD/MenusUI/MenuBox/ChooseConstruct/VariantsBox"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("12_dkuwd")
+icon = ExtResource("15_u01mp")
+metadata/Type = "People"
+
+[node name="Money" type="Button" parent="UI/MargUI/HUD/MenusUI/MenuBox/ChooseConstruct/VariantsBox"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("12_dkuwd")
+icon = ExtResource("16_qfm32")
+metadata/Type = "Money"
+
+[node name="Ingot" type="Button" parent="UI/MargUI/HUD/MenusUI/MenuBox/ChooseConstruct/VariantsBox"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("12_dkuwd")
+icon = ExtResource("17_c23po")
+metadata/Type = "Ingot"
+
+[node name="Food" type="Button" parent="UI/MargUI/HUD/MenusUI/MenuBox/ChooseConstruct/VariantsBox"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("12_dkuwd")
+icon = ExtResource("18_ma8wg")
+metadata/Type = "Food"
+
+[node name="Confirm" type="Button" parent="UI/MargUI/HUD/MenusUI/MenuBox/ChooseConstruct"]
+layout_mode = 2
+text = "Побудувати"
+
+[node name="ControlConstruct" type="VBoxContainer" parent="UI/MargUI/HUD/MenusUI/MenuBox"]
+visible = false
+layout_mode = 2
+script = ExtResource("21_6o0m4")
+
+[node name="Delete" type="Button" parent="UI/MargUI/HUD/MenusUI/MenuBox/ControlConstruct"]
+layout_mode = 2
+text = "Delete"
+
+[node name="OptionMenu" type="PanelContainer" parent="UI/MargUI"]
+visible = false
+layout_mode = 2
+script = ExtResource("22_fjyhw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MargUI/OptionMenu"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Header" type="Label" parent="UI/MargUI/OptionMenu/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="BackButton" type="Button" parent="UI/MargUI/OptionMenu/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="SaveButton" type="Button" parent="UI/MargUI/OptionMenu/VBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="QuitButton" type="Button" parent="UI/MargUI/OptionMenu/VBoxContainer"]
+layout_mode = 2
+text = "Quit"

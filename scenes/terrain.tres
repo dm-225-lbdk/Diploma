@@ -1,0 +1,75 @@
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://brs8lxsggk7dr"]
+
+[ext_resource type="Texture2D" uid="uid://bbtowhjienavd" path="res://assets/sprites/terrainTiles.png" id="1_ica30"]
+[ext_resource type="Texture2D" uid="uid://r45ftawab0ko" path="res://assets/sprites/buildings.png" id="2_snqhg"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_unb0w"]
+tile_data = PackedInt32Array(0, 0, 1, 65536, 131072, 1, 131072, 131072, 2, 196608, 131072, 1, 1, 0, 2, 65537, 0, 2, 131073, 131072, 2, 196609, 0, 2, 2, 131072, 1, 65538, 131072, 2, 131074, 65536, 2, 196610, 0, 1, 3, 0, 2, 65539, 0, 2, 131075, 131072, 1, 196611, 131072, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4ndd5"]
+tile_data = PackedInt32Array(0, 0, 65537, 65536, 0, 805371905, 131072, 0, 1, 196608, 0, 1879048193, 262144, 0, 2, 327680, 0, 805306370, 1, 0, 1610678273, 65537, 0, 1073807361, 131073, 0, 1610612737, 196609, 0, 1342177281, 262145, 0, 1610612738, 327681, 0, 268435458, 2, 0, 131073, 65538, 0, 805437441, 131074, 65536, 1610612737, 196610, 65536, 1, 262146, 65536, 2, 327682, 65536, 1879048194, 3, 0, 1610743809, 65539, 0, 268566529, 131075, 65536, 1879048193, 196611, 65536, 1342177281, 262147, 65536, 1610612738, 327683, 65536, 1342177282, 4, 131072, 1, 65540, 131072, 1, 131076, 131072, 1, 196612, 131072, 1, 262148, 131072, 1, 327684, 131072, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_88bdi"]
+resource_name = "terrain"
+texture = ExtResource("1_ica30")
+0:0/0 = 0
+1:0/animation_columns = 2
+1:0/0 = 0
+2:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+3:2/0 = 0
+3:3/0 = 0
+3:4/0 = 0
+3:4/0/texture_origin = Vector2i(0, 6)
+4:4/0 = 0
+0:1/0 = 0
+2:3/0 = 0
+1:3/0 = 0
+2:4/0 = 0
+1:4/0 = 0
+0:4/0 = 0
+0:3/0 = 0
+0:2/0 = 0
+4:0/size_in_atlas = Vector2i(1, 4)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, 28)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_som6r"]
+resource_name = "buildings"
+texture = ExtResource("2_snqhg")
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -2)
+1:0/size_in_atlas = Vector2i(1, 2)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -2)
+2:0/size_in_atlas = Vector2i(1, 2)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -2)
+3:0/size_in_atlas = Vector2i(1, 2)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -2)
+4:0/size_in_atlas = Vector2i(1, 2)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, -2)
+5:0/size_in_atlas = Vector2i(1, 2)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, -2)
+6:0/size_in_atlas = Vector2i(1, 2)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, -2)
+7:0/size_in_atlas = Vector2i(1, 2)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, -2)
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_88bdi")
+sources/1 = SubResource("TileSetAtlasSource_som6r")
+pattern_0 = SubResource("TileMapPattern_unb0w")
+pattern_1 = SubResource("TileMapPattern_4ndd5")
